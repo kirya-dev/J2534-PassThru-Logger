@@ -13,7 +13,13 @@ namespace PassThruLoggerControl
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new J2534LogController());
+            try
+            {
+                Application.Run(new J2534LogController());
+            } catch (System.Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Uncatched exception");
+            }
         }
     }
 }

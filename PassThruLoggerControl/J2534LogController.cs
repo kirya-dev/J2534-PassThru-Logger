@@ -32,22 +32,7 @@ namespace PassThruLoggerControl
 
             connectionBindingSource.DataSource = connectionBindingList;
 
-            using (var reg32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
-            {
-                using (var passthruList = reg32.OpenSubKey(@"Software\PassThruSupport.04.04\", false))
-                {
-                    foreach (var v in passthruList.GetSubKeyNames())
-                    {
-                        if (v.Contains("Passthru Logger")) continue;
-                        RegistryKey passThruEntry = passthruList.OpenSubKey(v);
-                        if (passThruEntry != null)
-                        {
-                            drivers.Add(new J2534Driver(v, passThruEntry));
-                        }
-                    }
-                }
-            }
-
+            RegistryHelper.ScanDrivers(drivers);
             defaultdriver.DataSource = drivers;
 
             using (var reg32 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry32))

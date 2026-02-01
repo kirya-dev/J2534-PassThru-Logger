@@ -82,6 +82,7 @@
     <Compile Include="J2534ProtocolInterpreter_0404.cs" />
     <Compile Include="J2534SerializationConstants.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="RegistryHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="J2534LogController.resx">
       <DependentUpon>J2534LogController.cs</DependentUpon>
